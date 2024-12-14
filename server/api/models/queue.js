@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 
 const queueSchema = new mongoose.Schema({
-  name: String,
-  location: String,
-  maxCapacity: Number,
-  timePerPerson: Number, // in minutes
+  name: { type: String, required: true },
+  location: { type: String, required: true },
+  maxCapacity: { type: Number, required: false },
+  timePerPerson: { type: Number, required: true },
   users: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
 });
 

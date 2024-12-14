@@ -23,7 +23,6 @@ router.post("/:queueId/register", async (req, res) => {
     });
     await user.save();
 
-    // Add the user to the queue
     queue.users.push(user);
     await queue.save();
 
