@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-  name: String,
-  contact: String,
+  name: { type: String, required: true },
+  contact: { type: Number, required: true },
   queueId: { type: mongoose.Schema.Types.ObjectId, ref: "Queue" },
   position: Number,
 });

@@ -15,6 +15,13 @@ router.post("/:queueId/register", async (req, res) => {
       return res.status(404).json({ message: "Queue not found" });
     }
 
+    const existingUser = await User.findOne({ contact, queueId });
+    if (existingUser) {
+      return res.status(400).json({
+        message: "User with this contact is already registered in the queue",
+      });
+    }
+
     const user = new User({
       queueId,
       name,
