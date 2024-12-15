@@ -6,7 +6,7 @@ import qrcode from "qrcode";
 const router = express.Router();
 
 // Route to create a new queue
-router.post("/", async (req, res) => {
+router.post("/newQueue", async (req, res) => {
   try {
     const { name, location, maxCapacity, timePerPerson } = req.body;
     const queueData = { name, location, timePerPerson };
