@@ -4,6 +4,7 @@ import connectDB from "./dbConnect.js";
 import queueRoutes from "./routes/queueRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import dotenv from "dotenv";
+import cors from "cors";
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ const port = 5000;
 
 connectDB();
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
