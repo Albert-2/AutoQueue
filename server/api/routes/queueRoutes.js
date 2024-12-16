@@ -10,8 +10,8 @@ const verificationCodes = {};
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: process.env.EMAIL_USER, 
-    pass: process.env.EMAIL_PASS, 
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
 });
 
@@ -100,7 +100,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Route to get queue details (e.g., user list)
 router.get("/info/:queueId", async (req, res) => {
   try {
     const { queueId } = req.params;
@@ -119,24 +118,22 @@ router.get("/info/:queueId", async (req, res) => {
 router.delete("/del/:queueId", async (req, res) => {
   try {
     const { queueId } = req.params;
-    const { adminEmail, verificationCode } = req.body;
-
-    if (verificationCodes[adminEmail] !== verificationCode) {
-      return res
-        .status(400)
-        .json({ message: "Invalid or expired verification code" });
-    }
+    const { adminEmail } = req.body;
 
     const queue = await Queue.findById(queueId);
     if (!queue) {
       return res.status(404).json({ message: "Queue not found" });
     }
 
+    if (queue.admin.email !== adminEmail) {
+      return res
+        .status(403)
+        .json({ message: "Unauthorized: Invalid admin email" });
+    }
+
     await User.deleteMany({ queueId });
 
     await Queue.findByIdAndDelete(queueId);
-
-    delete verificationCodes[adminEmail];
 
     res
       .status(200)
