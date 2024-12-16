@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 
 const UserRegistration = () => {
   const [name, setName] = useState("");
-  const [contact, setContact] = useState("");
+  const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const { queueID } = useParams();
@@ -13,8 +13,8 @@ const UserRegistration = () => {
     e.preventDefault();
     setLoading(true);
 
-    // Check if name and contact are provided
-    if (!name || !contact) {
+    // Check if name and email are provided
+    if (!name || !email) {
       setMessage("Please fill in all the fields.");
       setLoading(false);
       return;
@@ -30,7 +30,7 @@ const UserRegistration = () => {
           },
           body: JSON.stringify({
             name,
-            contact,
+            email,
           }),
         }
       );
@@ -42,7 +42,7 @@ const UserRegistration = () => {
           `Registration successful! Your position is ${data.position}.`
         );
         setName("");
-        setContact("");
+        setEmail("");
         setTimeout(() => {
           navigate(`/api/queues/info/${queueID}`);
         }, 5000);
@@ -82,17 +82,17 @@ const UserRegistration = () => {
 
           <div>
             <label
-              htmlFor="contact"
+              htmlFor="email"
               className="block text-sm font-medium text-gray-700"
             >
-              Mobile Number
+              Email
             </label>
             <input
-              type="text"
-              id="contact"
+              type="email"
+              id="email"
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              value={contact}
-              onChange={(e) => setContact(e.target.value)}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
