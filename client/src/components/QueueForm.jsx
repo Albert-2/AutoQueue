@@ -92,7 +92,6 @@ const QueueForm = () => {
       {success && <p className="text-green-500 text-sm">{success}</p>}
       {error && <p className="text-red-500 text-sm">{error}</p>}
 
-      {/* Admin Name */}
       <div>
         <label className="block text-sm font-medium text-gray-700">
           Admin Name
@@ -107,7 +106,6 @@ const QueueForm = () => {
         />
       </div>
 
-      {/* Admin Email */}
       <div>
         <label className="block text-sm font-medium text-gray-700">
           Admin Email
@@ -121,8 +119,8 @@ const QueueForm = () => {
           required
         />
       </div>
-      <div className="flex items-end gap-2 justify-end w-full">
-        <div className="w-4/5">
+      <div className="flex sm:flex-row flex-col sm:items-end gap-2 justify-end w-full">
+        <div className="sm:w-4/5">
           <label className="block text-sm font-medium text-gray-700">
             Verification Code
           </label>
@@ -137,13 +135,12 @@ const QueueForm = () => {
         <button
           type="button"
           onClick={sendVerificationCode}
-          className="w-2/5 bg-blue-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          className="sm:w-2/5 bg-blue-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
         >
           Send Verification Code
         </button>
       </div>
 
-      {/* Queue Fields */}
       <div>
         <label className="block text-sm font-medium text-gray-700">Name</label>
         <input
@@ -180,6 +177,7 @@ const QueueForm = () => {
           onChange={(e) => setMaxCapacity(e.target.value)}
           className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           placeholder="Default is 30"
+          min={0}
         />
       </div>
 
@@ -193,6 +191,7 @@ const QueueForm = () => {
           onChange={(e) => setTimePerPerson(e.target.value)}
           className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           placeholder="Default is 5 minutes"
+          min={0}
         />
       </div>
 

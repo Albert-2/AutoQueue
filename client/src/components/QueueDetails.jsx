@@ -106,7 +106,7 @@ const QueueDetails = () => {
             <label className="block text-sm font-medium text-gray-700">
               Enter Admin Email to Delete Queue
             </label>
-            <div className="flex items-center gap-2 mt-2">
+            <div className="flex sm:flex-row flex-col items-center gap-2 mt-2">
               <input
                 type="email"
                 value={adminEmail}
@@ -117,7 +117,7 @@ const QueueDetails = () => {
               />
               <button
                 onClick={handleDeleteQueue}
-                className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+                className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 sm:w-2/5 w-full"
               >
                 Confirm Delete
               </button>
@@ -188,7 +188,7 @@ const QueueDetails = () => {
             </div>
             <div className="mt-6">
               <Link to={`/api/users/${queueID}/register`}>
-                <button className="w-full p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 text-lg font-semibold">
+                <button className="w-full p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 sm:text-lg font-semibold">
                   Participate in the Queue
                 </button>
               </Link>
