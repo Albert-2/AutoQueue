@@ -8,7 +8,9 @@ const QueueList = () => {
   useEffect(() => {
     const fetchQueues = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/queues");
+        const response = await fetch(
+          `${import.meta.env.VITE_API_DOMAIN}/api/queues`
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch queues");
         }

@@ -16,7 +16,7 @@ const QueueForm = () => {
   const sendVerificationCode = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/queues/verifyCode",
+        `${import.meta.env.VITE_API_DOMAIN}/api/queues/verifyCode`,
         {
           method: "POST",
           headers: {
@@ -52,7 +52,7 @@ const QueueForm = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/queues/newQueue",
+        `${import.meta.env.VITE_API_DOMAIN}/api/queues/newQueue`,
         {
           method: "POST",
           headers: {

@@ -13,7 +13,7 @@ const QueueDetails = () => {
   const fetchQueueDetails = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/queues/info/${queueID}`
+        `${import.meta.env.VITE_API_DOMAIN}/api/queues/info/${queueID}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch queue details");
@@ -28,7 +28,7 @@ const QueueDetails = () => {
   const handleDeleteQueue = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/queues/del/${queueID}`,
+        `${import.meta.env.VITE_API_DOMAIN}/api/queues/del/${queueID}`,
         {
           method: "DELETE",
           headers: {
@@ -52,7 +52,9 @@ const QueueDetails = () => {
   const handleDeleteUser = async (userID) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/queues/${queueID}/user/${userID}`,
+        `${
+          import.meta.env.VITE_API_DOMAIN
+        }/api/queues/${queueID}/user/${userID}`,
         {
           method: "DELETE",
         }
